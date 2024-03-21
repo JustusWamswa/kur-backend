@@ -4,6 +4,7 @@ const requireAuthentication = require('../middleware/requireAuthentication')
 const router = express.Router()
 
 router.get('/getPosts', postController.getPosts)
+router.post('/getBatchPosts', postController.getBatchPosts)
 router.get('/getPost/:id', postController.getPost)
 
 // auth middleware

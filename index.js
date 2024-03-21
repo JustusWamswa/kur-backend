@@ -4,9 +4,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const userRoutes = require('./routes/userRoutes')
 const postRoutes = require('./routes/postRoutes')
-// const eventRoutes = require('./routes/eventRoutes')
-// const opportunityRoutes = require('./routes/opportunityRoutes')
-// const messageRoutes = require('./routes/messageRoutes')
+const commentRoutes = require('./routes/commentRoutes')
 
 
 
@@ -24,9 +22,8 @@ app.use(express.json())
 // routes
 app.use('/api/user', userRoutes)
 app.use('/api/post', postRoutes)
-// app.use('/api/event', eventRoutes)
-// app.use('/api/opportunity', opportunityRoutes)
-// app.use('/api/message', messageRoutes)
+app.use('/api/comment', commentRoutes)
+
 
 // const http = require('http')
 // const server = http.createServer(app)
