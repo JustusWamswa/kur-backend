@@ -5,6 +5,7 @@ const cors = require('cors')
 const userRoutes = require('./routes/userRoutes')
 const postRoutes = require('./routes/postRoutes')
 const commentRoutes = require('./routes/commentRoutes')
+const feedbackRoutes = require('./routes/feedbackRoutes')
 
 
 
@@ -23,6 +24,7 @@ app.use(express.json())
 app.use('/api/user', userRoutes)
 app.use('/api/post', postRoutes)
 app.use('/api/comment', commentRoutes)
+app.use('/api/feedback', feedbackRoutes)
 
 
 // const http = require('http')
