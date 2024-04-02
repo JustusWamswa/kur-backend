@@ -21,7 +21,7 @@ const createPost = async (req, res) => {
 // get posts 
 const getPosts = async (req, res) => {
     try {
-        const posts = await Post.find().populate('creator_user').sort({ updatedAt: -1 })
+        const posts = await Post.find().populate('creator_user').sort({ createdAt: -1 })
         posts.map((post) => {
             post.creator_user = {admin: post.creator_user.admin, email: post.creator_user.email, profilePicture: post.creator_user.profilePicture, 
                 firstName: post.creator_user.firstName, lastName: post.creator_user.lastName, verified: post.creator_user.verified
@@ -107,36 +107,5 @@ const deletePost = async (req, res) => {
     }
 }
 
-// add like 
-const addLike = async (req, res) => {
-    const { id } = req.body
-    if (!id) {
-        console.log("Error: Provide post id")
-        return res.status(400).json({ error: "Provide post id" })
-    }
-    try {
-        const like = await Post.findByIdAndUpdate(id, { $inc: { likes: 1 } }, { new: true })
-        res.status(200).json(like)
-    } catch (error) {
-        console.log(error)
-        res.status(500).json(error)
-    }
-}
 
-// remove like 
-const removeLike = async (req, res) => {
-    const { id } = req.body
-    if (!id) {
-        console.log("Error: Provide post id")
-        return res.status(400).json({ error: "Provide post id" })
-    }
-    try {
-        const like = await Event.findByIdAndUpdate(id, { $inc: { likes: -1 } }, { new: true })
-        res.status(200).json(like)
-    } catch (error) {
-        console.log(error)
-        res.status(500).json(error)
-    }
-}
-
-module.exports = { createPost, getPost, getPosts, updatePost, deletePost, addLike, removeLike, getBatchPosts }
+module.exports = { createPost, getPost, getPosts, updatePost, deletePost, getBatchPosts }

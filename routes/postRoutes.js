@@ -13,8 +13,6 @@ router.use(requireAuthentication)
 router.post('/createPost', postController.createPost)
 router.put('/updatePost', postController.updatePost)
 router.delete('/deletePost', postController.deletePost)
-router.post('/addLike', postController.addLike)
-router.post('/removeLike', postController.removeLike)
 
 
 module.exports = router

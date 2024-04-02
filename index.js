@@ -5,7 +5,9 @@ const cors = require('cors')
 const userRoutes = require('./routes/userRoutes')
 const postRoutes = require('./routes/postRoutes')
 const commentRoutes = require('./routes/commentRoutes')
+const replyRoutes = require('./routes/replyRoutes')
 const feedbackRoutes = require('./routes/feedbackRoutes')
+const likeRoutes = require('./routes/likeRoutes')
 
 
 
@@ -24,7 +26,9 @@ app.use(express.json())
 app.use('/api/user', userRoutes)
 app.use('/api/post', postRoutes)
 app.use('/api/comment', commentRoutes)
+app.use('/api/reply', replyRoutes)
 app.use('/api/feedback', feedbackRoutes)
+app.use('/api/like', likeRoutes)
 
 
 // const http = require('http')
@@ -37,13 +41,11 @@ app.use('/api/feedback', feedbackRoutes)
 // })
 
 // io.on('connection', (socket) => {
-
+//   socket.on('join_room', (data) => {
+//     socket.join(data)
+//   })
 //   socket.on('send_post', (data) => {
-//     // TODO 
-//     // save the post to db
-
-//     // show post to everyone
-//     socket.broadcast.emit('receive_post', data)
+//     socket.to(data.room).emit('receive_post', data)
 //   })
 // })
 
@@ -64,3 +66,4 @@ app.get('/', function (req, res) {
 })
 
 module.exports = app
+
